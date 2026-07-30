@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: fda_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - huggingface_cache:/root/.cache/huggingface
+    networks:
+      - fda_network
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - ROBOFLOW_API_KEY=${ROBOFLOW_API_KEY}
+      - ROBOFLOW_WORKSPACE=${ROBOFLOW_WORKSPACE}
+      - ROBOFLOW_PROJECT_ID=${ROBOFLOW_PROJECT_ID}
+      - ROBOFLOW_VERSION=${ROBOFLOW_VERSION}
+      - TYPHOON_API_KEY=${TYPHOON_API_KEY}
+      - TYPHOON_ENDPOINT=${TYPHOON_ENDPOINT}
+      - TYPHOON_MODEL=${TYPHOON_MODEL}
+      - HF_TOKEN=${HF_TOKEN}
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    build: ./frontend
+    container_name: fda_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+    depends_on:
+      - backend
+    networks:
+      - fda_network
+
+  db:
+    image: postgres:15-alpine
+    container_name: fda_db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - fda_network
+
+networks:
+  fda_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  huggingface_cache:

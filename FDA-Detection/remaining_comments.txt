@@ -1,0 +1,156 @@
+#/## or ##-#-#####-#-####)."
+... existing crawler content ...
+0. Strict Constraint: SHOP_ONLY DRUG Penalty Cap
+1. Domain Whitelist
+1. Scrape Data with Resilient Scraper
+1. Title & Meta
+2. Analyze Results
+2. Extract Data from Scraper Result
+2. Heuristics & Product Classification
+20 seconds
+3. Calculate Risk
+3. Deep Verification Section
+3. Fallback to any remaining categories detected by keyword
+4. Final Database Sync
+4. Mandatory Keywords - 15 Points
+4. Transparency Calculation
+5% padding for context
+5. Thai Language Presence - 10 Points
+7. Medical Score Boost
+ANALYSIS MODE: MAIN CONTENT
+AUTO-SCAN CENTER LAYOUT
+Add DOM images first as they are high confidence
+Add Thai promotional keywords to blacklist check
+Alert Section
+Alias for consistency with index.js naming
+Always load EasyOCR as it's the primary or the fallback
+Analysis Feed
+Analysis Statistics Card
+Anti-Prompt Echo: If output contains prompt keywords, it's a hallucination
+Auto-collect successful URL into seed database
+Backward-compatible API uses `threshold` instead of `box_threshold`.
+CENTER: Product Info
+COMBINE + FILTER
+Category Distribution Chart
+Combine all possible text sources for maximum detection probability
+Combine all sources, deduplicate
+Components
+Concurrency Control
+Conservative fallback
+Content Section
+Content based on category
+Count how many credentials were found
+Crawler Settings
+DASHBOARD VIEW
+DINO prediction must overlap with at least one package box
+Data Completeness Chart
+Debug Panel Toggle
+Enforce 2-column Metadata UI
+Ensure normalized for regex
+Evidence Gallery
+Factual observation — NOT risk judgment
+Fallback path
+Fallback to box crop
+Fallback: No product box from Roboflow -> full image DINO
+Fallback: try Googlebot category crawl
+Featured Image
+Filter Settings
+First check formal attributes
+Footer: Status Summary
+Global Scan: Also scan the entire page text as a fallback
+Handle Hydration & Persistence
+Header Section
+Header: Action Bar
+Header: Product Title & Certification
+Header: Simplified Summary
+Highlighting found number
+Human-like delay for React hydration
+Hybrid Visual Guard: Visibility + Sticker Check
+If both are "invalid" but not empty, pick the one with better potential
+If shop_category is GENERAL but we found a license on the product,
+In upload mode, we don't have a shop claim. We will assume the shop correctly claims whatever the OCR finds
+Initial data fetch
+Initialize to avoid UnboundLocalError
+Input Area
+Intelligent Status Display
+Items Needing Review — Neutral
+Keep Roboflow as safety fallback
+Keep existing detector state if runtime config fails.
+Keep only predictions that don't overlap significantly with the best_pred
+Keywords Settings
+LEFT: Product Image
+LEFT: Shop Claims
+Label Row
+Left Side: Shop Data Record
+Legacy Gallery Thumbnails
+Loading / Progress State
+Main Scrollable Body
+Mapping Taxonomy
+Middle Tier: Data Comparison
+Neutral Compliance Status
+New Gallery Container
+New Thumbnail Class
+OCR Stream
+Pattern 1: Direct ID pattern i.SHOPID.ITEMID
+Pattern 2: Full Shopee URLs from search results
+Pre-load both engines as singletons to prevent re-init overhead
+Pre-seeded URLs + organic collection from Single Scans.
+Premium Modals
+Premium Navigation Header
+Prioritize unscanned URLs
+Product Type Badge
+RESULTS AREA
+RIGHT PANEL: Analytics & Settings
+RIGHT: AI Evidence Grid
+RIGHT: Evidence Data + Action
+Recover title from Meta if still missing
+Remove duplicates while preserving order
+Rescale DINO coordinates back to full-image space
+Reset scan tracking and serve first batch
+Right Side: Visual Evidence & Raw Stream
+Roboflow model
+Run DINO on the cropped product region
+SCRAPE_FAILED Informer
+STAGE 1: Roboflow → Product Locator
+Scrollable Mini-History Feed
+Separate unscanned vs already-scanned
+Setup session with retries for "Full Throttle" robustness
+Simplified Reasoning Section
+Skip only if the category is determined to be GENERAL or UNKNOWN.
+Smart Selection: Check quality before picking
+Sort by confidence descending
+Standard User Agents for Rotation
+Standardize to a user-friendly label instead of technical model names
+Structured Taxonomy for AI Classification
+Supporting Drug Reg
+Supporting Fact
+TIMEOUT, BLOCKED, OTHER, CIRCUIT_BREAKER
+Top Stats Cards — Neutral
+Top Tier: The Certification Header
+Track already-scanned URLs
+Try SAM refinement first
+URLs from successful Single Scans
+Utilities
+Value Display
+Verification Pillars Grid
+View Evidence Button
+Visual Evidence Section
+Warning: Category Mismatch
+Wrap sync call in thread
+You might want to fetch initial history here if useScanner doesn't
+[CRITICAL FIX] cv2.imdecode often fails on WebP/AVIF from Shopee. Fallback to Pillow.
+[DYNAMIC] MEDICINE FILTER: Use the intelligent classification engine
+[Full Throttle] High-confidence default for Typhoon
+[MAIN NAV] Navigate to Product
+[MULTI-STAGE] Navigate to Home if no session
+[NEW] Pre-classify to avoid UNKNOWN in UI
+[NEW] Skip if already scanned recently
+[POST-EXTRACTION SCAN] Centralized license identification
+[REFINED] Use the score-based classifier for the early filter decision.
+[REVERTED] Force CPU for stability and simplicity
+[REVERTED] Standard FP32 on CPU
+[SAM Hard Limit] Max 2 crops refined per request to save VRAM
+to test the 'PRODUCT_ONLY' or 'MATCH' logic, simulating a self-consistent product.
+v4.0 Filter: Exclude common Shopee tracking or UI garbage
+we MUST NOT skip as it's likely a miscategorized regulated product.
+🕷️ SPIDER MODE: Extract related product URLs for continuous crawling

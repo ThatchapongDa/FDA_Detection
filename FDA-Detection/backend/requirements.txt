@@ -1,0 +1,30 @@
+# === Core API Framework ===
+fastapi
+uvicorn
+pydantic
+python-multipart
+
+# === Database ===
+sqlalchemy
+psycopg2-binary
+
+# === AI / Vision Models ===
+torch
+torchvision
+transformers
+roboflow
+easyocr
+
+# === Image Processing ===
+opencv-python-headless
+pillow
+pillow-avif-plugin
+numpy
+
+# === Web Scraping ===
+playwright==1.49.0
+playwright-stealth==1.0.6
+
+# === HTTP & Utilities ===
+requests
+cachetools==5.5.0

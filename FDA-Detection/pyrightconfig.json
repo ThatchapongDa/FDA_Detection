@@ -1,0 +1,24 @@
+{
+  "pythonVersion": "3.10",
+  "pythonPlatform": "Linux",
+  "typeCheckingMode": "off",
+  "reportMissingModuleSource": "none",
+  "reportMissingImports": "none",
+  "reportMissingTypeStubs": "none",
+  "reportAttributeAccessIssue": "none",
+  "reportGeneralTypeIssues": "none",
+  "reportOptionalMemberAccess": "none",
+  "reportCallIssue": "none",
+  "reportIndexIssue": "none",
+  "reportUndefinedVariable": "none",
+  "useLibraryCodeForTypes": true,
+  "extraPaths": [
+    "./backend"
+  ],
+  "exclude": [
+    "**/__pycache__",
+    "**/node_modules",
+    "**/.conda",
+    "**/frontend"
+  ]
+}

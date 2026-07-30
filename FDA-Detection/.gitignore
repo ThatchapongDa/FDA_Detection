@@ -1,0 +1,24 @@
+# Git ignore - FDA Detection System
+
+# Environment variables
+.env
+
+# Dependencies
+node_modules/
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+backend/app.log
+
+# Build artifacts
+.next/
+dist/
+build/
+out/
+.DS_Store
+Thumbs.db

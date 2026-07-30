@@ -1,0 +1,9 @@
+{
+  "crawler_delay": 30,
+  "cache_expiry_hours": 24,
+  "enable_medicine_filter": true,
+  "max_scan_limit": 5,
+  "detection_state": "B",
+  "grounding_dino_prompt": "thai fda registration box . fda registration number . drug registration number . reg no . ยาสามัญประจำบ้าน . foil blister pack . medicine strip . pill blister . logo . registration label",
+  "crawler_keywords": []
+}

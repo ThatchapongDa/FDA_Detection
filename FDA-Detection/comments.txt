@@ -1,0 +1,98 @@
+Format a description string from attributes for classification and storage
+Medical labels on white backgrounds have high detail. Banners are mostly flat white.
+Normalized score
+Smart Category Inference: Fallback if Shopee fails to provide category
+Check for overwhelming white or black areas
+Global offset was causing skips across unrelated keywords.
+Detail View Sync: Universal Reg Box
+Ensure it's marked as stopped even on weird exits
+Clean and Store OCR Text
+OCR: Targeted pass
+Logic for OCR: DINO detections, crops refined with SAM in detector
+Visual Evidence crops
+OCR & Evidence extraction follows...
+logger.debug(f"📊 Image Audit: StdDev: {std_dev:.1f}, Edges: {edge_density:.1f}%, Trans: {transparency_pct:.1f}%")
+Scraper already handles cache, retry, and circuit breaker internally
+Support drug reg
+Use parallel dual OCR if Typhoon available, else standard
+to test the 'PRODUCT_ONLY' or 'MATCH' logic, simulating a self-consistent product.
+Tight Aspect Ratio Filter: Discard Banners (Most products are square 1:1)
+Has Alpha channel
+Map error type to user-friendly message
+Product thumbnail
+Fallback download if needed
+We reuse the existing generator seamlessly, consuming it completely silently
+Check if ANY shop license matches ANY OCR license
+Standard products are 0.8 to 1.25. Banners are often > 1.5 or < 0.6
+Initial Load
+we MUST NOT skip as it's likely a miscategorized regulated product.
+Show skip message briefly
+Check Supplement first to avoid Drug label on supplements mentioning "ยา"
+Re-compute indicators for detail view
+Aggregate all shop-provided licenses
+AD is for medicine ads usually
+If the title is generic or looks like a script/code placeholder (e.g. '__', '.js', 'tanstack'), DO NOT skip.
+Phase 1 Optimization: Always Include Full Image for Global OCR Coverage
+Use SAM for FDA labels
+Audit as if it were a regulated product
+Regex check for specific types
+Detect
+ghost check
+Skip only if the category is determined to be GENERAL or UNKNOWN.
+Initialize evidence and summary variables
+Required to explicitly register AVIF plugin
+Save temp file for detector
+Show ALL found text in UI for transparency, 
+Intelligent Category Fallback: Use AI classification if Scraper fails
+Run with concurrency limit
+Enforce Cap one last time just in case other categories demand it later
+Save uploaded file
+Centralized Regex Patterns: Define once, use for both Metadata and OCR
+AI Section: Found ON IMAGES (OCR)
+Post-Processing: Consolidated Holistic Analysis
+Small delay to ensure stability
+Fast box crop for non-FDA labels (skip SAM)
+Both flat color AND few edges
+This indicates the scraper failed to get the real title, so we must analyze the images.
+Fix: Explicitly cast re.search to bool to avoid JSON serializable error
+Update item_name if we can parse it from progress (optional)
+Holistic Sequential Processing: No ranking, just thorough analysis of all images
+Final result of the item
+This ensures we find text even if DINO/SAM fails to detect a specific label box.
+Use global settings if hours is default
+Return last N lines
+Usually if it has Food FDA format + no supplement keywords, it's just Food
+Return as list of blocks sorted descending
+In upload mode, we don't have a shop claim. We will assume the shop correctly claims whatever the OCR finds
+Content-Aware Transparency (New v3.2): 
+We will do grouping here in python for simplicity
+Phase 1 Optimization: Parallel OCR
+Interpretation thresholds (v2.7 Evidence-based labels)
+Save first image for card
+Column already exists
+If shop_category is GENERAL but we found a license on the product, 
+Holistic Approach: Take ALL images from scraper (up to 20 for safety)
+Download candidates for ranking and processing
+Re-compute detailed stats for the feed
+Reject > 70% transparency if it lacks Medical Characteristics (low detail).
+Use pre-downloaded image bytes
+Fallback Payload for UI
+Pre-calculate Metadata Claims (Scraper)
+Spin up a new db session for each item to avoid thread issues
+CRAWLER ENGINE (Auto-Scan Background Task)
+Build Verified Credentials Object (Upload)
+Stream image results back to UI in real-time
+Reset Pagination: Always start from page 0 for new searches 
+Clear name on finish
+Build Verified Credentials Object for Modern UI
+Detection Pass (DINO)
+hour string: "YYYY-MM-DD HH:00"
+Auto-migrate: Add product_image column if not exists
+Fallback to fast box crop
+Extreme flat color (likely logo/icon)
+Initialize default vars in case OCR fails completely on all images
+This is more robust than a simple exclusion list.
+but we still track 'valid' for the holistic logic later.
+Update DB Record
+Save Scraped Metadata
+Encode crops as base64 for UI
