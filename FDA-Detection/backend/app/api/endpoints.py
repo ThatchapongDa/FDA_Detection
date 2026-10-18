@@ -549,11 +549,16 @@ async def create_scan_generator(request: ScanRequest, background_tasks: Backgrou
         yield f"data: {json.dumps({'status': 'progress', 'message': f'พบข้อมูลเดิมที่เคยสแกนไว้ (ใช้ข้อมูล Cache ย้อนหลัง {hours} ชม.)...'})}\n\n"
         await asyncio.sleep(0.5)
         
+        legal_info = []
+        if recent_record.risk_level in ["NOT_FOUND", "SHOP_ONLY", "MISMATCH"]:
+            legal_info = ExplainEngine.get_legal_violation(recent_record.product_type, ["fda_number"])
+
         result_payload = {
             "id": recent_record.id,
             "status": "completed",
             "risk_level": recent_record.risk_level,
             "risk_reason": recent_record.risk_reason,
+            "legal_compliance": legal_info,
             "product_type": recent_record.product_type,
             "product_info": {
                 "title": recent_record.product_name,
@@ -1233,11 +1238,17 @@ async def create_scan_upload(file: UploadFile = File(...), db: Session = Depends
             "drug_reg": {"found": len(drug_valid) > 0, "text": drug_valid[0] if drug_valid else None}
         }
 
+        # [NEW] Add separate Legal Compliance Info for UI
+        legal_info = []
+        if db_record.risk_level in ["NOT_FOUND", "SHOP_ONLY", "MISMATCH"]:
+            legal_info = ExplainEngine.get_legal_violation(db_record.product_type, ["fda_number"])
+
         return {
             "id": db_record.id,
             "status": "completed",
             "risk_level": db_record.risk_level,
             "risk_reason": risk_reason,
+            "legal_compliance": legal_info,
             "product_type": db_record.product_type,
             "verified_credentials": verified_credentials,
             "shop_data": shop_data,
@@ -1298,6 +1309,10 @@ def get_history(db: Session = Depends(get_db)):
         has_thai = bool(re.search(r'[\u0E00-\u0E7F]', extracted_text))
         has_label = any(p.get('class') in ['FDA Box', 'FDA / Registration Label', 'FDA/Registration Label'] for res in scan_results for p in res.get('detections', []))
 
+        legal_info = []
+        if r.risk_level in ["NOT_FOUND", "SHOP_ONLY", "MISMATCH"]:
+            legal_info = ExplainEngine.get_legal_violation(r.product_type, ["fda_number"])
+
         results.append({
             "id": r.id,
             "product_name": r.product_name,
@@ -1309,6 +1324,7 @@ def get_history(db: Session = Depends(get_db)):
             "scraped_drug_number": r.scraped_drug_number,
             "risk_level": r.risk_level,
             "risk_reason": r.risk_reason,
+            "legal_compliance": legal_info,
             "score": (r.confidence_score or 0) / 100 if hasattr(r, 'confidence_score') else 0,
             "created_at": r.created_at.isoformat(),
             "fda_numbers": r.fda_numbers,

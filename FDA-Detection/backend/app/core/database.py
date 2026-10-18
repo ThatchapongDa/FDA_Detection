@@ -6,6 +6,8 @@ from sqlalchemy.orm import sessionmaker
 # [Environment Aware] Use 'localhost' for Native Windows, 'db' for Docker
 default_host = "localhost" if os.name == "nt" else "db"
 DATABASE_URL = os.getenv("DATABASE_URL", f"postgresql://postgres:postgres@{default_host}:5432/fda_detection")
+if os.name == "nt" and "@db:" in DATABASE_URL:
+    DATABASE_URL = DATABASE_URL.replace("@db:", "@localhost:")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
