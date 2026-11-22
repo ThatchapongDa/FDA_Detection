@@ -27,4 +27,5 @@ playwright-stealth==1.0.6
 
 # === HTTP & Utilities ===
 requests
+httpx
 cachetools==5.5.0

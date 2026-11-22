@@ -1,0 +1,69 @@
+# ==========================================
+# Root .gitignore - FDA Detection Project
+# ==========================================
+
+# Environments & Secrets
+.env
+.env.local
+*.env
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+venv/
+.venv/
+env/
+.conda/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.next/
+out/
+build/
+dist/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/*
+!.vscode/settings.json
+.idea/
+.agents/
+skills-lock.json
+
+# Thesis working documents & temporary formatting scripts
+*.docx
+rebuild_*.py
+format_*.py
+audit_*.py
+build_*.py
+inspect_*.py
+make_*.py
+update_*.py
+tighten_*.py
+convert_*.py
+add_*.py
+calc_*.py
+fix_*.py
+verify_*.py
+chapter2_content.py
+test_*.py
+test_*.png
+test_*.svg
+test_*.html
+extracted_images/
+debug_*.py
+export_*.py
+generate_*.py
+insert_*.py
+remove_*.py
+extract_*.py
+apply_*.py
+

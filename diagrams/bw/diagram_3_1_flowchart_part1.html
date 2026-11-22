@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<style>
+  body { margin: 0; padding: 10px; background: #ffffff; display: inline-block; font-family: Tahoma, 'Leelawadee UI', Arial, sans-serif; }
+  svg { display: block; }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 640 720" width="640" height="720"
+     role="img" aria-labelledby="fc1-title fc1-desc"
+     style="min-width:640px; font-family:Tahoma, 'Leelawadee UI', Arial, sans-serif;">
+  <title id="fc1-title">แผนภาพตรรกะการประมวลผลส่วนที่ 1</title>
+  <desc id="fc1-desc">แผนภาพแสดงขั้นตอนการดึงข้อมูลจาก Shopee และการคัดกรองเบื้องต้นก่อนส่งเข้า AI Pipeline</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#000000"/>
+    </marker>
+    <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#000000"/>
+    </marker>
+    <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff"/>
+
+  <!-- === ARROWS (drawn before boxes) === -->
+
+  <!-- Start → Input URL -->
+  <line x1="320" y1="56" x2="320" y2="96" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Input URL → Web Scraper -->
+  <line x1="320" y1="148" x2="320" y2="200" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Web Scraper → Collect Image & Metadata -->
+  <line x1="320" y1="252" x2="320" y2="304" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Collect → Check -->
+  <line x1="320" y1="356" x2="320" y2="408" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Check YES (down) → YOLO -->
+  <line x1="320" y1="460" x2="320" y2="504" stroke="#000000" stroke-width="1.8" marker-end="url(#arrow-accent)"/>
+
+  <!-- Check NO (right) → Error box -->
+  <path d="M 420 434 L 520 434 L 520 544 L 504 544" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- YOLO → Node A (connector to Part 2) -->
+  <line x1="320" y1="584" x2="320" y2="632" stroke="#000000" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#arrow-accent)"/>
+
+  <!-- === BOXES === -->
+
+  <!-- START oval -->
+  <rect x="240" y="44" width="160" height="44" rx="22" fill="#ffffff" stroke="#000000" stroke-width="0"/>
+  <ellipse cx="320" cy="32" rx="72" ry="24" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="320" y="36" text-anchor="middle" fill="#000000" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="13" font-weight="600">เริ่มต้น</text>
+
+  <!-- INPUT URL box -->
+  <rect x="252" y="12" width="136" height="0" rx="6" fill="#ffffff"/>
+  <!-- Input box proper -->
+  <rect x="224" y="96" width="192" height="52" rx="6" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="320" y="116" text-anchor="middle" fill="#000000" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="13" font-weight="600">ป้อน URL / Keyword</text>
+  <text x="320" y="134" text-anchor="middle" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="10">Shopee Product URL</text>
+
+  <!-- Web Scraper box -->
+  <rect x="196" y="200" width="248" height="52" rx="6" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="320" y="220" text-anchor="middle" fill="#000000" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="13" font-weight="600">Web Scraper</text>
+  <text x="320" y="238" text-anchor="middle" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="10">Playwright · เลียนแบบพฤติกรรมมนุษย์</text>
+
+  <!-- Collect Image & Metadata box -->
+  <rect x="180" y="304" width="280" height="52" rx="6" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="320" y="324" text-anchor="middle" fill="#000000" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="13" font-weight="600">รวบรวมรูปภาพและ Metadata</text>
+  <text x="320" y="342" text-anchor="middle" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="10">ชื่อสินค้า · ราคา · รูปภาพ · ร้านค้า</text>
+
+  <!-- Decision Diamond: ข้อมูลครบถ้วน? -->
+  <polygon points="320,408 420,434 320,460 220,434" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="320" y="430" text-anchor="middle" fill="#000000" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="12" font-weight="600">ข้อมูลครบถ้วน?</text>
+  <text x="320" y="446" text-anchor="middle" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9">Image + Metadata</text>
+
+  <!-- YES label -->
+  <rect x="290" y="464" width="28" height="16" rx="2" fill="#ffffff"/>
+  <text x="304" y="476" text-anchor="middle" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="10" letter-spacing="0.08em">YES</text>
+
+  <!-- NO label -->
+  <rect x="426" y="426" width="24" height="16" rx="2" fill="#ffffff"/>
+  <text x="438" y="438" text-anchor="middle" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="10" letter-spacing="0.08em">NO</text>
+
+  <!-- Error Handler box -->
+  <rect x="420" y="504" width="180" height="52" rx="6" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="510" y="524" text-anchor="middle" fill="#000000" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="12" font-weight="600">แจ้งเตือนข้อผิดพลาด</text>
+  <text x="510" y="542" text-anchor="middle" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9">Error Handling · Log</text>
+
+  <!-- YOLO Initial Screen box -->
+  <rect x="160" y="504" width="320" height="80" rx="6" fill="#ffffff" stroke="#000000" stroke-width="1.8"/>
+  <text x="320" y="527" text-anchor="middle" fill="#000000" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="12" font-weight="600">YOLO (Roboflow)</text>
+  <text x="320" y="545" text-anchor="middle" fill="#000000" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="12">คัดกรองเบื้องต้น: พบผลิตภัณฑ์สุขภาพ?</text>
+  <text x="320" y="563" text-anchor="middle" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9">Initial Localization · Real-time</text>
+  <text x="320" y="578" text-anchor="middle" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9">Confidence &gt; 0.5 → ผ่าน</text>
+
+  <!-- Node A connector oval -->
+  <ellipse cx="320" cy="648" rx="52" ry="24" fill="#ffffff" stroke="#000000" stroke-width="1.8"/>
+  <text x="320" y="644" text-anchor="middle" fill="#000000" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="13" font-weight="600">Node A</text>
+  <text x="320" y="660" text-anchor="middle" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">→ ส่วนที่ 2</text>
+
+  <!-- === LEGEND STRIP === -->
+  <rect x="0" y="680" width="640" height="40" fill="#ffffff"/>
+  <line x1="0" y1="680" x2="640" y2="680" stroke="#000000" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Legend items -->
+  <rect x="24" y="692" width="28" height="14" rx="6" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="58" y="703" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9" letter-spacing="0.06em">เริ่ม/จบ</text>
+
+  <rect x="120" y="692" width="28" height="14" rx="3" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="154" y="703" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9" letter-spacing="0.06em">ขั้นตอน</text>
+
+  <polygon points="224,706 254,692 284,706 254,720" transform="scale(0.55) translate(165,545)" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="248" y="703" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9" letter-spacing="0.06em">การตัดสินใจ</text>
+
+  <rect x="348" y="692" width="28" height="14" rx="3" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="382" y="703" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9" letter-spacing="0.06em">จุดสำคัญ (accent)</text>
+
+  <line x1="494" y1="699" x2="514" y2="699" stroke="#000000" stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrow-accent)"/>
+  <text x="522" y="703" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9" letter-spacing="0.06em">ส่งต่อ</text>
+</svg>
+</body>
+</html>

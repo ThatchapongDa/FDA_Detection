@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<style>
+  body { margin: 0; padding: 10px; background: #ffffff; display: inline-block; font-family: Tahoma, 'Leelawadee UI', Arial, sans-serif; }
+  svg { display: block; }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 860 640" width="860" height="640"
+     role="img" aria-labelledby="cls-title cls-desc"
+     style="min-width:860px; font-family:Tahoma, 'Leelawadee UI', Arial, sans-serif;">
+  <title id="cls-title">Class Diagram — FDA Detection System</title>
+  <desc id="cls-desc">คลาสไดอะแกรมแสดงโครงสร้างและความสัมพันธ์ระหว่างคลาสหลัก 5 คลาสของระบบ</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#000000"/>
+    </marker>
+    <marker id="arrow-compose" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto">
+      <polygon points="6 1, 12 6, 6 11, 0 6" fill="#000000"/>
+    </marker>
+    <marker id="arrow-open" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polyline points="0 0, 10 4, 0 8" fill="none" stroke="#000000" stroke-width="1.2"/>
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff"/>
+
+  <!-- === HELPER: class box macro ===
+    Structure: header rect (class name), divider, attributes area, divider, methods area
+  -->
+
+  <!-- CLASS: FastAPI_App (accent / focal - center top) -->
+  <rect x="328" y="32" width="204" height="132" rx="6" fill="#ffffff" stroke="#000000" stroke-width="1.8"/>
+  <rect x="328" y="32" width="204" height="32" rx="6" fill="#000000"/>
+  <rect x="328" y="50" width="204" height="14" fill="#000000"/><!-- square bottom of header -->
+  <text x="430" y="53" text-anchor="middle" fill="#ffffff" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="12" font-weight="600">FastAPI_App</text>
+  <line x1="328" y1="64" x2="532" y2="64" stroke="#000000" stroke-width="1"/>
+  <text x="338" y="80" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ app: FastAPI</text>
+  <text x="338" y="94" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ db_session: Session</text>
+  <line x1="328" y1="102" x2="532" y2="102" stroke="#000000" stroke-width="0.8" opacity="0.4"/>
+  <text x="338" y="118" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ scan_product(url)</text>
+  <text x="338" y="132" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ stream_status(id)</text>
+  <text x="338" y="146" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ get_scan_history()</text>
+
+  <!-- CLASS: ShopeeScraper (left) -->
+  <rect x="32" y="252" width="196" height="144" rx="6" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <rect x="32" y="252" width="196" height="28" rx="6" fill="#000000"/>
+  <rect x="32" y="268" width="196" height="12" fill="#000000"/>
+  <text x="130" y="270" text-anchor="middle" fill="#ffffff" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="11" font-weight="600">ShopeeScraper</text>
+  <line x1="32" y1="280" x2="228" y2="280" stroke="#000000" stroke-width="1"/>
+  <text x="42" y="296" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ browser: Playwright</text>
+  <text x="42" y="310" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ base_url: str</text>
+  <line x1="32" y1="318" x2="228" y2="318" stroke="#000000" stroke-width="0.8" opacity="0.4"/>
+  <text x="42" y="334" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ scrape(url) → dict</text>
+  <text x="42" y="348" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ download_images()</text>
+  <text x="42" y="362" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ parse_metadata()</text>
+  <text x="42" y="376" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ crawl_keyword(kw)</text>
+
+  <!-- CLASS: FDADetector (center) -->
+  <rect x="308" y="252" width="244" height="160" rx="6" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <rect x="308" y="252" width="244" height="28" rx="6" fill="#000000"/>
+  <rect x="308" y="268" width="244" height="12" fill="#000000"/>
+  <text x="430" y="270" text-anchor="middle" fill="#ffffff" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="11" font-weight="600">FDADetector</text>
+  <line x1="308" y1="280" x2="552" y2="280" stroke="#000000" stroke-width="1"/>
+  <text x="318" y="296" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ dino_model: GroundingDINO</text>
+  <text x="318" y="310" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ sam_model: SAM</text>
+  <text x="318" y="324" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ ocr_engine: OCREngine</text>
+  <line x1="308" y1="332" x2="552" y2="332" stroke="#000000" stroke-width="0.8" opacity="0.4"/>
+  <text x="318" y="348" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ detect_label(img) → BBox</text>
+  <text x="318" y="362" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ segment_crop(bbox) → img</text>
+  <text x="318" y="376" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ extract_text(img) → str</text>
+  <text x="318" y="390" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ validate_fda_no(text) → bool</text>
+  <text x="318" y="404" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ assess_risk(data) → RiskLevel</text>
+
+  <!-- CLASS: OCREngine (right) -->
+  <rect x="632" y="252" width="196" height="144" rx="6" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <rect x="632" y="252" width="196" height="28" rx="6" fill="#000000"/>
+  <rect x="632" y="268" width="196" height="12" fill="#000000"/>
+  <text x="730" y="270" text-anchor="middle" fill="#ffffff" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="11" font-weight="600">OCREngine</text>
+  <line x1="632" y1="280" x2="828" y2="280" stroke="#000000" stroke-width="1"/>
+  <text x="642" y="296" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ typhoon: TyphoonOCR</text>
+  <text x="642" y="310" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ easy_ocr: EasyOCR</text>
+  <text x="642" y="324" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ regex: re.Pattern</text>
+  <line x1="632" y1="332" x2="828" y2="332" stroke="#000000" stroke-width="0.8" opacity="0.4"/>
+  <text x="642" y="348" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ read(img, mode) → str</text>
+  <text x="642" y="362" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ extract_fda(text) → str</text>
+  <text x="642" y="376" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">+ extract_reg(text) → str</text>
+
+  <!-- CLASS: Database_Models (bottom center) -->
+  <rect x="264" y="488" width="364" height="108" rx="6" fill="#f4f4f4" stroke="#000000" stroke-width="1.5"/>
+  <rect x="264" y="488" width="364" height="28" rx="6" fill="#000000"/>
+  <rect x="264" y="504" width="364" height="12" fill="#000000"/>
+  <text x="446" y="506" text-anchor="middle" fill="#ffffff" font-family="Tahoma, 'Leelawadee UI', Arial, sans-serif" font-size="11" font-weight="600">Database_Models (SQLAlchemy ORM)</text>
+  <line x1="264" y1="516" x2="628" y2="516" stroke="#000000" stroke-width="1"/>
+  <text x="274" y="532" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">ScanRecord: id, url, risk_level, fda_no, created_at</text>
+  <text x="274" y="546" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">BoundingBox: id, scan_id, x, y, w, h, confidence</text>
+  <text x="274" y="560" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">CrawlJob: id, keyword, status, found_count</text>
+  <text x="274" y="574" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">Product: id, name, shop_name, price, image_url</text>
+
+  <!-- === RELATIONSHIPS (drawn before boxes if needed, after here for clarity) === -->
+
+  <!-- FastAPI_App *-- FDADetector (composition, 1-1) -->
+  <path d="M 430 164 L 430 252" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="380" y="196" width="100" height="14" rx="2" fill="#ffffff"/>
+  <text x="430" y="207" text-anchor="middle" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">Orchestrates 1..1</text>
+
+  <!-- FastAPI_App *-- ShopeeScraper (association) -->
+  <path d="M 328 120 L 130 120 L 130 252" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="176" y="110" width="72" height="14" rx="2" fill="#ffffff"/>
+  <text x="212" y="121" text-anchor="middle" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9">Uses 1..1</text>
+
+  <!-- FDADetector *-- OCREngine (composition) -->
+  <path d="M 552 340 L 632 340" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="565" y="330" width="54" height="14" rx="2" fill="#ffffff"/>
+  <text x="592" y="341" text-anchor="middle" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="9">Owns 1..1</text>
+
+  <!-- FastAPI_App ..> Database_Models (dependency) -->
+  <path d="M 430 164 L 430 460 L 446 488" fill="none" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-open)"/>
+  <rect x="390" y="356" width="80" height="14" rx="2" fill="#ffffff"/>
+  <text x="430" y="367" text-anchor="middle" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9">CRUD Ops</text>
+
+  <!-- Legend -->
+  <rect x="0" y="600" width="860" height="40" fill="#ffffff"/>
+  <line x1="0" y1="600" x2="860" y2="600" stroke="#000000" stroke-width="0.5" opacity="0.15"/>
+  <line x1="24" y1="620" x2="56" y2="620" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="62" y="624" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9">Composition / Association</text>
+  <line x1="240" y1="620" x2="272" y2="620" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-open)"/>
+  <text x="278" y="624" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9">Dependency «uses»</text>
+  <rect x="430" y="612" width="36" height="16" rx="3" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="448" y="624" text-anchor="middle" fill="#000000" font-family="Courier New, Tahoma, monospace" font-size="8">Entry</text>
+  <text x="492" y="624" fill="#222222" font-family="Courier New, Tahoma, monospace" font-size="9">คลาสหลักของระบบ</text>
+</svg>
+</body>
+</html>

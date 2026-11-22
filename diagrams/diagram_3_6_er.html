@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ภาพที่ 3.6 — ER Diagram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f5f5; font-family: 'Geist', sans-serif; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 20px; }
+  .page { background: #f5f5f5; max-width: 900px; width: 100%; }
+  .eyebrow { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: #2d3142; opacity: 0.5; text-transform: uppercase; margin-bottom: 8px; }
+  h1 { font-family: 'Instrument Serif', serif; font-size: 26px; font-weight: 400; color: #2d3142; margin-bottom: 6px; }
+  .subtitle { font-family: 'Geist', sans-serif; font-size: 13px; color: #2d3142; opacity: 0.55; margin-bottom: 28px; }
+  .diagram-wrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="page">
+  <p class="eyebrow">บทที่ 3 · ขั้นตอนการดำเนินงาน</p>
+  <h1>แผนภาพแสดงความสัมพันธ์ระหว่างข้อมูล</h1>
+  <p class="subtitle">ER Diagram — โครงสร้างฐานข้อมูลและความสัมพันธ์ระหว่างตารางของระบบ FDA Detection</p>
+  <div class="diagram-wrap">
+<svg viewBox="0 0 860 620" width="860" height="620"
+     role="img" aria-labelledby="er-title er-desc"
+     style="min-width:860px; font-family:'Geist',sans-serif;">
+  <title id="er-title">ER Diagram — FDA Detection System Database</title>
+  <desc id="er-desc">แผนภาพแสดงโครงสร้างตารางฐานข้อมูลและความสัมพันธ์ระหว่าง tbl_scan_records, tbl_products, tbl_bounding_boxes, tbl_crawl_jobs และ tbl_system_settings</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#8b8fa8"/>
+    </marker>
+    <marker id="arrow-fk" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3a70c4"/>
+    </marker>
+    <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#bf4520"/>
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#f5f5f5"/>
+
+  <!-- TABLE: tbl_scan_records (center - accent / focal) -->
+  <rect x="290" y="32" width="280" height="236" rx="6" fill="#fff8f6" stroke="#bf4520" stroke-width="1.8"/>
+  <rect x="290" y="32" width="280" height="32" rx="6" fill="#bf4520"/>
+  <rect x="290" y="48" width="280" height="16" fill="#bf4520"/>
+  <text x="430" y="52" text-anchor="middle" fill="#ffffff" font-family="'Geist',sans-serif" font-size="12" font-weight="600">tbl_scan_records</text>
+  <line x1="290" y1="64" x2="570" y2="64" stroke="#bf4520" stroke-width="1"/>
+  <!-- PK -->
+  <text x="300" y="80" fill="#bf4520" font-family="'Geist Mono',monospace" font-size="9" font-weight="500">PK  id</text>
+  <text x="430" y="80" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">UUID</text>
+  <line x1="290" y1="86" x2="570" y2="86" stroke="#bf4520" stroke-width="0.5" opacity="0.3"/>
+  <text x="300" y="102" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">FK  product_id</text>
+  <text x="440" y="102" fill="#3a70c4" font-family="'Geist Mono',monospace" font-size="9">UUID</text>
+  <text x="300" y="116" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    shopee_url</text>
+  <text x="440" y="116" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TEXT</text>
+  <text x="300" y="130" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    risk_level</text>
+  <text x="440" y="130" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">ENUM</text>
+  <text x="300" y="144" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    fda_logo_found</text>
+  <text x="440" y="144" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">BOOLEAN</text>
+  <text x="300" y="158" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    thai_label_found</text>
+  <text x="440" y="158" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">BOOLEAN</text>
+  <text x="300" y="172" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    extracted_fda_no</text>
+  <text x="440" y="172" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">VARCHAR(20)</text>
+  <text x="300" y="186" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    fda_db_match</text>
+  <text x="440" y="186" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">BOOLEAN</text>
+  <text x="300" y="200" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    raw_ocr_text</text>
+  <text x="440" y="200" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TEXT</text>
+  <text x="300" y="214" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    created_at</text>
+  <text x="440" y="214" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TIMESTAMP</text>
+  <text x="300" y="228" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    processing_time_ms</text>
+  <text x="440" y="228" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">INTEGER</text>
+  <text x="300" y="242" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    ocr_engine_used</text>
+  <text x="440" y="242" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">VARCHAR(20)</text>
+  <text x="300" y="256" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">FK  crawl_job_id</text>
+  <text x="440" y="256" fill="#3a70c4" font-family="'Geist Mono',monospace" font-size="9">UUID NULLABLE</text>
+
+  <!-- TABLE: tbl_products (top left) -->
+  <rect x="20" y="32" width="220" height="156" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1.5"/>
+  <rect x="20" y="32" width="220" height="28" rx="6" fill="#2d3142"/>
+  <rect x="20" y="48" width="220" height="12" fill="#2d3142"/>
+  <text x="130" y="50" text-anchor="middle" fill="#ffffff" font-family="'Geist',sans-serif" font-size="11" font-weight="600">tbl_products</text>
+  <line x1="20" y1="60" x2="240" y2="60" stroke="#2d3142" stroke-width="1"/>
+  <text x="30" y="76" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9" font-weight="500">PK  id</text>
+  <text x="140" y="76" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">UUID</text>
+  <text x="30" y="90" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    product_name</text>
+  <text x="140" y="90" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TEXT</text>
+  <text x="30" y="104" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    shop_name</text>
+  <text x="140" y="104" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TEXT</text>
+  <text x="30" y="118" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    price</text>
+  <text x="140" y="118" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">NUMERIC</text>
+  <text x="30" y="132" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    image_urls</text>
+  <text x="140" y="132" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">JSONB</text>
+  <text x="30" y="146" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    shopee_url</text>
+  <text x="140" y="146" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TEXT</text>
+  <text x="30" y="160" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    category</text>
+  <text x="140" y="160" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">VARCHAR(30)</text>
+  <text x="30" y="174" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    is_active</text>
+  <text x="140" y="174" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">BOOLEAN</text>
+
+  <!-- TABLE: tbl_bounding_boxes (bottom left) -->
+  <rect x="20" y="320" width="232" height="168" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1.5"/>
+  <rect x="20" y="320" width="232" height="28" rx="6" fill="#2d3142"/>
+  <rect x="20" y="336" width="232" height="12" fill="#2d3142"/>
+  <text x="136" y="338" text-anchor="middle" fill="#ffffff" font-family="'Geist',sans-serif" font-size="11" font-weight="600">tbl_bounding_boxes</text>
+  <line x1="20" y1="348" x2="252" y2="348" stroke="#2d3142" stroke-width="1"/>
+  <text x="30" y="364" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9" font-weight="500">PK  id</text>
+  <text x="152" y="364" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">UUID</text>
+  <text x="30" y="378" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">FK  scan_id</text>
+  <text x="152" y="378" fill="#3a70c4" font-family="'Geist Mono',monospace" font-size="9">UUID</text>
+  <text x="30" y="392" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    label</text>
+  <text x="152" y="392" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">VARCHAR(50)</text>
+  <text x="30" y="406" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    x, y, width, height</text>
+  <text x="152" y="406" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">FLOAT</text>
+  <text x="30" y="420" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    confidence</text>
+  <text x="152" y="420" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">FLOAT</text>
+  <text x="30" y="434" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    crop_image_b64</text>
+  <text x="152" y="434" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TEXT</text>
+  <text x="30" y="448" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    source_model</text>
+  <text x="152" y="448" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">VARCHAR(20)</text>
+  <text x="30" y="462" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    created_at</text>
+  <text x="152" y="462" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TIMESTAMP</text>
+  <text x="30" y="476" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    text_extracted</text>
+  <text x="152" y="476" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TEXT</text>
+
+  <!-- TABLE: tbl_crawl_jobs (top right) -->
+  <rect x="620" y="32" width="220" height="168" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1.5"/>
+  <rect x="620" y="32" width="220" height="28" rx="6" fill="#2d3142"/>
+  <rect x="620" y="48" width="220" height="12" fill="#2d3142"/>
+  <text x="730" y="50" text-anchor="middle" fill="#ffffff" font-family="'Geist',sans-serif" font-size="11" font-weight="600">tbl_crawl_jobs</text>
+  <line x1="620" y1="60" x2="840" y2="60" stroke="#2d3142" stroke-width="1"/>
+  <text x="630" y="76" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9" font-weight="500">PK  id</text>
+  <text x="750" y="76" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">UUID</text>
+  <text x="630" y="90" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    keyword</text>
+  <text x="750" y="90" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">VARCHAR(100)</text>
+  <text x="630" y="104" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    status</text>
+  <text x="750" y="104" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">ENUM</text>
+  <text x="630" y="118" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    total_found</text>
+  <text x="750" y="118" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">INTEGER</text>
+  <text x="630" y="132" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    high_risk_count</text>
+  <text x="750" y="132" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">INTEGER</text>
+  <text x="630" y="146" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    started_at</text>
+  <text x="750" y="146" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TIMESTAMP</text>
+  <text x="630" y="160" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    finished_at</text>
+  <text x="750" y="160" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TIMESTAMP</text>
+  <text x="630" y="174" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    error_log</text>
+  <text x="750" y="174" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TEXT</text>
+  <text x="630" y="188" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    max_pages</text>
+  <text x="750" y="188" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">INTEGER</text>
+
+  <!-- TABLE: tbl_system_settings (bottom right) -->
+  <rect x="620" y="320" width="220" height="120" rx="6" fill="#eceff1" stroke="#2d3142" stroke-width="1.5"/>
+  <rect x="620" y="320" width="220" height="28" rx="6" fill="#455a64"/>
+  <rect x="620" y="336" width="220" height="12" fill="#455a64"/>
+  <text x="730" y="338" text-anchor="middle" fill="#ffffff" font-family="'Geist',sans-serif" font-size="11" font-weight="600">tbl_system_settings</text>
+  <line x1="620" y1="348" x2="840" y2="348" stroke="#455a64" stroke-width="1"/>
+  <text x="630" y="364" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9" font-weight="500">PK  id</text>
+  <text x="750" y="364" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">INTEGER</text>
+  <text x="630" y="378" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    key</text>
+  <text x="750" y="378" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">VARCHAR(50) UNIQUE</text>
+  <text x="630" y="392" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    value</text>
+  <text x="750" y="392" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TEXT</text>
+  <text x="630" y="406" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    description</text>
+  <text x="750" y="406" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TEXT</text>
+  <text x="630" y="420" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">    updated_at</text>
+  <text x="750" y="420" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">TIMESTAMP</text>
+
+  <!-- === FK RELATIONSHIPS (arrows) === -->
+
+  <!-- tbl_products (1) → tbl_scan_records (many) -->
+  <path d="M 240 110 L 290 110" fill="none" stroke="#3a70c4" stroke-width="1.5" marker-end="url(#arrow-fk)"/>
+  <rect x="238" y="100" width="20" height="14" rx="2" fill="#f5f5f5"/>
+  <text x="248" y="111" text-anchor="middle" fill="#3a70c4" font-family="'Geist Mono',monospace" font-size="9">1</text>
+  <rect x="270" y="100" width="20" height="14" rx="2" fill="#f5f5f5"/>
+  <text x="280" y="111" text-anchor="middle" fill="#3a70c4" font-family="'Geist Mono',monospace" font-size="9">N</text>
+
+  <!-- tbl_scan_records (1) → tbl_bounding_boxes (many) -->
+  <path d="M 386 268 L 386 320 L 252 390" fill="none" stroke="#3a70c4" stroke-width="1.5" marker-end="url(#arrow-fk)"/>
+  <rect x="364" y="288" width="20" height="14" rx="2" fill="#f5f5f5"/>
+  <text x="374" y="299" text-anchor="middle" fill="#3a70c4" font-family="'Geist Mono',monospace" font-size="9">1</text>
+  <rect x="232" y="376" width="20" height="14" rx="2" fill="#f5f5f5"/>
+  <text x="242" y="387" text-anchor="middle" fill="#3a70c4" font-family="'Geist Mono',monospace" font-size="9">N</text>
+
+  <!-- tbl_crawl_jobs (1) → tbl_scan_records (many) -->
+  <path d="M 620 100 L 570 100" fill="none" stroke="#3a70c4" stroke-width="1.5" marker-end="url(#arrow-fk)"/>
+  <rect x="600" y="90" width="20" height="14" rx="2" fill="#f5f5f5"/>
+  <text x="610" y="101" text-anchor="middle" fill="#3a70c4" font-family="'Geist Mono',monospace" font-size="9">1</text>
+  <rect x="550" y="90" width="20" height="14" rx="2" fill="#f5f5f5"/>
+  <text x="560" y="101" text-anchor="middle" fill="#3a70c4" font-family="'Geist Mono',monospace" font-size="9">N</text>
+
+  <!-- Legend -->
+  <rect x="0" y="580" width="860" height="40" fill="#f5f5f5"/>
+  <line x1="0" y1="580" x2="860" y2="580" stroke="#2d3142" stroke-width="0.5" opacity="0.15"/>
+  <rect x="24" y="592" width="56" height="18" rx="3" fill="#fff8f6" stroke="#bf4520" stroke-width="1.5"/>
+  <text x="52" y="605" text-anchor="middle" fill="#bf4520" font-family="'Geist Mono',monospace" font-size="8">ตารางหลัก</text>
+  <rect x="96" y="592" width="56" height="18" rx="3" fill="#ffffff" stroke="#2d3142" stroke-width="1.2"/>
+  <text x="124" y="605" text-anchor="middle" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="8">ตารางลูก</text>
+  <rect x="164" y="592" width="56" height="18" rx="3" fill="#eceff1" stroke="#455a64" stroke-width="1.2"/>
+  <text x="192" y="605" text-anchor="middle" fill="#455a64" font-family="'Geist Mono',monospace" font-size="8">Config</text>
+  <line x1="236" y1="601" x2="272" y2="601" stroke="#3a70c4" stroke-width="1.5" marker-end="url(#arrow-fk)"/>
+  <text x="278" y="605" fill="#8b8fa8" font-family="'Geist Mono',monospace" font-size="9">FK ความสัมพันธ์ (1:N)</text>
+  <text x="440" y="598" fill="#2d3142" font-family="'Geist Mono',monospace" font-size="9">PK = Primary Key</text>
+  <text x="440" y="612" fill="#3a70c4" font-family="'Geist Mono',monospace" font-size="9">FK = Foreign Key</text>
+</svg>
+  </div>
+</div>
+</body>
+</html>
