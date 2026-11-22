@@ -234,8 +234,6 @@ FDA_Detection/
 │   ├── start-docker.bat              # Script รัน Docker แบบอัตโนมัติบน Windows
 │   └── .env.example                  # Template ไฟล์ Environment Variables
 │
-├── diagrams/                         # แผนภาพสถาปัตยกรรมและ Flowchart
-├── draft_chapter_4_complete.md       # เนื้อหาร่างบทที่ 4 ผลการดำเนินงานและการทดลองฉบับเต็ม
 ├── .gitignore                        # Git Ignore Rules
 └── README.md                         # เอกสารแนะนำและคู่มือการใช้งานระบบฉบับนี้
 ```
@@ -251,5 +249,5 @@ FDA_Detection/
 ## ข้อมูลโครงงานและการติดต่อ (Project Information)
 
 * **โครงงานปริญญานิพนธ์ระดับปริญญาตรี (Senior Project) :** สาขาวิชาวิทยาการคอมพิวเตอร์
-* **ผู้พัฒนา :** นายธัชพงศ์ ดามาพงษ์ (Thatchapong Damaphong)
+* **ผู้พัฒนา :** นายธัชพงศ์ ดาน้อย (Thatchapong Danoi)
 * **GitHub Repository :** [https://github.com/ThatchapongDa/FDA_Detection](https://github.com/ThatchapongDa/FDA_Detection)

@@ -40,6 +40,9 @@ skills-lock.json
 
 # Thesis working documents & temporary formatting scripts
 *.docx
+draft_chapter_*.md
+draft_*.md
+diagrams/
 rebuild_*.py
 format_*.py
 audit_*.py

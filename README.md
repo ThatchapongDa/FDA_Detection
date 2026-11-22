@@ -234,8 +234,6 @@ FDA_Detection/
 │   ├── start-docker.bat              # Script รัน Docker แบบอัตโนมัติบน Windows
 │   └── .env.example                  # Template ไฟล์ Environment Variables
 │
-├── diagrams/                         # แผนภาพสถาปัตยกรรมและ Flowchart
-├── draft_chapter_4_complete.md       # เนื้อหาร่างบทที่ 4 ผลการดำเนินงานและการทดลองฉบับเต็ม
 ├── .gitignore                        # Git Ignore Rules
 └── README.md                         # เอกสารแนะนำและคู่มือการใช้งานระบบฉบับนี้
 ```
