@@ -1,4 +1,4 @@
-# 🏥 FDA & Drug Registration Detection System (FDA Detection System)
+# FDA & Drug Registration Detection System (FDA Detection System)
 ### ระบบตรวจจับและตรวจสอบข้อความบนฉลากยาและผลิตภัณฑ์สุขภาพบนแพลตฟอร์มพาณิชย์อิเล็กทรอนิกส์
 
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
@@ -12,7 +12,7 @@
 
 ---
 
-## 📖 1. บทนำและที่มาของโครงงาน (Project Overview)
+## 1. บทนำและที่มาของโครงงาน (Project Overview)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ในปัจจุบันการซื้อขายยาและผลิตภัณฑ์สุขภาพผ่านแพลตฟอร์มพาณิชย์อิเล็กทรอนิกส์ (E-Commerce) เช่น Shopee ได้รับความนิยมอย่างแพร่หลาย อย่างไรก็ดี พบปัญหาการจำหน่ายยาอันตราย ยาที่ไม่ได้ขึ้นทะเบียนตำรับยา หรือผลิตภัณฑ์ที่มีการแสดงเลข อย. ปลอม/ไม่ตรงกับความเป็นจริงเป็นจำนวนมาก ซึ่งส่งผลกระทบโดยตรงต่อความปลอดภัยของผู้บริโภคและขัดต่อข้อกฎหมายตาม **พระราชบัญญัติยา พ.ศ. 2510** และ **พระราชบัญญัติอาหาร พ.ศ. 2522**
 
@@ -20,31 +20,31 @@
 
 ---
 
-## 🌟 2. คุณสมบัติเด่นของระบบ (Key Features)
+## 2. คุณสมบัติเด่นของระบบ (Key Features)
 
-1. **🤖 Autonomous Stealth Scraper :**
+1. **Autonomous Stealth Scraper :**
    * ระบบดึงข้อมูลรายละเอียดและรูปภาพสินค้าจาก Shopee อัตโนมัติด้วย Playwright
    * รองรับกลไก Failsafe, การจำลองพฤติกรรมมนุษย์ (Stealth Browsing), และระบบ Session Cookie เพื่อป้องกันการถูกจำกัดการเข้าถึง (Anti-Scraping / HTTP 403)
-2. **🧹 Smart Image Preprocessing & Filtering :**
+2. **Smart Image Preprocessing & Filtering :**
    * กรองและปฏิเสธภาพขยะ ป้ายโปรโมชั่นส่วนลด และสติกเกอร์ร้านค้าอัตโนมัติด้วย OpenCV (High Transparency Filter > 90% และ Aspect Ratio Validation)
-3. **🎯 AI Packaging Localization & Precision Cropping :**
+3. **AI Packaging Localization & Precision Cropping :**
    * **Grounding DINO (Open-Vocabulary Object Detection) :** ค้นหาและระบุตำแหน่งกล่องยา แผงยา (Blister Pack) และขวดยา
    * **Segment Anything Model (SAM ViT-Base) :** ตัดภาพขอบฉลากยาเฉพาะส่วนอย่างละเอียดระดับพิกเซล ช่วยลดสัญญาณรบกวนของภาพพื้นหลังได้กว่า 96.8%
-4. **🔍 Dual-Engine OCR (High-Precision Thai OCR) :**
+4. **Dual-Engine OCR (High-Precision Thai OCR) :**
    * **Typhoon OCR (Vision-LLM API) :** สกัดข้อความภาษาไทยและเลขทะเบียนยาด้วยความแม่นยำสูงถึง **92.4%** แม้ภาพจะมีความเอียงหรือแสงสะท้อนบนฟอยล์แผงยา
    * **EasyOCR (Local Fallback) :** รองรับการประมวลผลบนเครื่องแบบออฟไลน์
-5. **⚖️ Explainable Legal Compliance & Risk Engine :**
+5. **Explainable Legal Compliance & Risk Engine :**
    * เปรียบเทียบข้อมูลที่ร้านค้าระบุ (Claimed Data) กับข้อมูลที่ AI ตรวจพบบนภาพจริง (Vision Data)
    * จำแนกระดับความเสี่ยง 4 ระดับ: `MATCH` (ถูกต้อง), `MISMATCH` (ข้อมูลไม่ตรงกัน), `SHOP_ONLY` (มีแต่ข้อความร้านแต่ภาพไม่มี), และ `NOT_FOUND` (ไม่พบเลขทะเบียน)
    * แสดงกล่องข้อกฎหมายสีแดง (**Legal Violation Alert Box**) ระบุชื่อ พ.ร.บ., มาตราที่ฝ่าฝืน (เช่น พ.ร.บ. ยา 2510 มาตรา 72(4)), และบทลงโทษทันที
-6. **💻 Interactive Modern Web Interface :**
+6. **Interactive Modern Web Interface :**
    * **Single Scan Center :** ตรวจสอบสินค้าแบบเจาะจงรายชิ้น พร้อมแถบสถานะ Progress Bar และการ์ดพยานหลักฐาน 4 มิติ (Credential Cards)
    * **Deep Dive Evidence Audit :** หน้าต่าง Modal แสดงภาพต้นฉบับพร้อม Bounding Box และภาพฉลากตัดย่อย (SAM Crops)
    * **Autonomous Crawler & Incident History :** ระบบเฝ้าสังเกตการณ์ตลาดออนไลน์อัตโนมัติตามคีย์เวิร์ด
 
 ---
 
-## 🏗️ 3. สถาปัตยกรรมการทำงานของระบบ (System Architecture)
+## 3. สถาปัตยกรรมการทำงานของระบบ (System Architecture)
 
 ```
 [ Shopee Product URL ]
@@ -88,11 +88,11 @@
 
 ---
 
-## 🚀 4. วิธีการติดตั้งและรันระบบ (Quick Start Guide)
+## 4. วิธีการติดตั้งและรันระบบ (Quick Start Guide)
 
 ระบบรองรับการรัน 2 รูปแบบ โดยขอแนะนำให้ **รันผ่าน Docker** เพื่อความสะดวกและไม่ต้องติดตั้งสภาพแวดล้อมปัญญาประดิษฐ์บนเครื่องโฮสต์
 
-### 🐳 วิธีที่ 1: รันผ่าน Docker Compose (แนะนำสำหรับการตรวจโครงงาน)
+### วิธีที่ 1: รันผ่าน Docker Compose (แนะนำสำหรับการตรวจโครงงาน)
 
 **ข้อกำหนดเบื้องต้น :** ติดตั้ง [Docker Desktop](https://www.docker.com/products/docker-desktop/) บนเครื่องคอมพิวเตอร์
 
@@ -106,7 +106,7 @@
    # หากยังไม่มีไฟล์ .env ให้คัดลอกจากไฟล์ตัวอย่าง
    cp .env.example .env
    ```
-   *(หมายเหตุ: ไฟล์ `.env.example` ได้ระบุค่าคอนฟิกเริ่มต้นและ API Key สำหรับทดสอบระบบไว้พร้อมใช้งานแล้ว)*
+   *(หมายเหตุ: ไฟล์ `.env.example` ได้ระบุโครงสร้างการตั้งค่าเริ่มต้นสำหรับเตรียมรันระบบไว้แล้ว)*
 
 3. **สั่ง Build และเริ่มทำงานของทุก Service ด้วยคำสั่งเดียว :**
    ```bash
@@ -114,9 +114,9 @@
    ```
 
 4. **เข้าใช้งานระบบผ่านเว็บเบราว์เซอร์ :**
-   * 🌐 **Frontend (Web Application) :** [http://localhost:3000](http://localhost:3000)
-   * 📡 **Backend API (Swagger Docs) :** [http://localhost:8000/docs](http://localhost:8000/docs)
-   * 🗄️ **Database (PostgreSQL) :** `localhost:5432` (User/Password: `postgres`)
+   * **Frontend (Web Application) :** [http://localhost:3000](http://localhost:3000)
+   * **Backend API (Swagger Docs) :** [http://localhost:8000/docs](http://localhost:8000/docs)
+   * **Database (PostgreSQL) :** `localhost:5432` (User/Password: `postgres`)
 
 5. **คำสั่งสั่งหยุดการทำงานเมื่อใช้งานเสร็จสิ้น :**
    ```bash
@@ -125,7 +125,7 @@
 
 ---
 
-### 💻 วิธีที่ 2: รันแบบ Native (Local Development)
+### วิธีที่ 2: รันแบบ Native (Local Development)
 
 **ข้อกำหนดเบื้องต้น :**
 * Python 3.11
@@ -161,11 +161,11 @@ npm run dev
 
 ---
 
-## 🧪 5. ตัวอย่างลิงก์สินค้าสำหรับทดสอบระบบ (Test URLs)
+## 5. ตัวอย่างลิงก์สินค้าสำหรับทดสอบระบบ (Test URLs)
 
 ผู้ตรวจสามารถคัดลอกลิงก์ตัวอย่างสินค้าจริงด้านล่างนี้ ไปวางในช่องสแกนหน้า [http://localhost:3000](http://localhost:3000) เพื่อทดสอบการทำงานของระบบได้ทันที:
 
-### 💊 กลุ่มผลิตภัณฑ์ยา (Drug Products)
+### กลุ่มผลิตภัณฑ์ยา (Drug Products)
 1. **ยาพาราเซตามอล Paracap 500 mg (ทดสอบการตรวจผ่านเกณฑ์ - MATCH):**
    ```text
    https://shopee.co.th/Paracap-Paracetamol-Tablets-500mg.-%E0%B8%9E%E0%B8%B2%E0%B8%A3%E0%B8%B2%E0%B9%81%E0%B8%84%E0%B8%9E-%E0%B8%9E%E0%B8%B2%E0%B8%A3%E0%B8%B2%E0%B9%80%E0%B8%8B%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%AD%E0%B8%A5-500-%E0%B8%A1%E0%B8%B4%E0%B8%A5%E0%B8%A5%E0%B8%B4%E0%B8%81%E0%B8%A3%E0%B8%B1%E0%B8%A1-10-%E0%B9%80%E0%B8%A1%E0%B9%87%E0%B8%94-50-%E0%B9%81%E0%B8%9C%E0%B8%87-1-%E0%B8%81%E0%B8%A5%E0%B9%88%E0%B8%AD%E0%B8%87-FF-6301-%E0%B8%A2%E0%B8%B2%E0%B8%AA%E0%B8%B2%E0%B8%A1%E0%B8%B1%E0%B8%8D%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%99-i.97475696.26650534704
@@ -179,7 +179,7 @@ npm run dev
    https://shopee.co.th/ยกกล่อง-ยาแก้แพ้-ลดน้ำมูก-คลอร์เฟนิรามีน-Chlorpheniramine-2-mg-10-เม็ด-แผง--ยาแก้แพ้-CPM-i.40713787.27717511326
    ```
 
-### 🥗 กลุ่มผลิตภัณฑ์เสริมอาหาร (Food & Supplements)
+### กลุ่มผลิตภัณฑ์เสริมอาหาร (Food & Supplements)
 1. **Blackmores Bio C 1000 mg:**
    ```text
    https://shopee.co.th/BLACKMORES-BIO-C-1000-MG.-DAILY-IMU-(Dietary-Supplement-Vitamin-C-and-Quercetin)-แบลคมอร์ส-ไบโอซี-ผลิตภัณฑ์เสริมอาหาร-i.388038998.54205722062
@@ -191,7 +191,7 @@ npm run dev
 
 ---
 
-## 📊 6. สรุปผลการประเมินประสิทธิภาพของระบบ (Performance Benchmark)
+## 6. สรุปผลการประเมินประสิทธิภาพของระบบ (Performance Benchmark)
 
 จากผลการทดลองในบทที่ 4 บนชุดข้อมูลตัวอย่างจริง 111 รายการ (534 ภาพ):
 
@@ -205,7 +205,7 @@ npm run dev
 
 ---
 
-## 📁 7. โครงสร้างไฟล์ของโปรเจกต์ (Project Structure)
+## 7. โครงสร้างไฟล์ของโปรเจกต์ (Project Structure)
 
 ```
 FDA_Detection/
@@ -242,13 +242,13 @@ FDA_Detection/
 
 ---
 
-## ⚖️ 8. ข้อจำกัดและการใช้งาน (Disclaimer)
+## 8. ข้อจำกัดและการใช้งาน (Disclaimer)
 
 * ระบบนี้เป็นระบบปัญญาประดิษฐ์เพื่อการสนับสนุนการตัดสินใจเบื้องต้น (Decision Support System) เท่านั้น ผลการวิเคราะห์ระดับความเสี่ยงและการตรวจจับข้อกฎหมายมีวัตถุประสงค์เพื่อช่วยคัดกรองสินค้าต้องสงสัยให้แก่เจ้าหน้าที่และผู้บริโภค ไม่สามารถใช้เป็นข้อสรุปทางคดีความโดยปราศจากการตรวจสอบซ้ำโดยเจ้าหน้าที่ผู้มีอำนาจตามกฎหมาย
 
 ---
 
-## 👨‍💻 ข้อมูลโครงงานและการติดต่อ (Project Information)
+## ข้อมูลโครงงานและการติดต่อ (Project Information)
 
 * **โครงงานปริญญานิพนธ์ระดับปริญญาตรี (Senior Project) :** สาขาวิชาวิทยาการคอมพิวเตอร์
 * **ผู้พัฒนา :** นายธัชพงศ์ ดามาพงษ์ (Thatchapong Damaphong)
